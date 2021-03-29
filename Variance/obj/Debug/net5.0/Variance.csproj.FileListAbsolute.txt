@@ -1,0 +1,15 @@
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/Variance.deps.json
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/Variance.runtimeconfig.json
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/Variance.runtimeconfig.dev.json
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/Variance.dll
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/ref/Variance.dll
+/Users/hyeonwoo/study/tdd/Variance/bin/Debug/net5.0/Variance.pdb
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.csprojAssemblyReference.cache
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.AssemblyInfoInputs.cache
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.AssemblyInfo.cs
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.csproj.CoreCompileInputs.cache
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.dll
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/ref/Variance.dll
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.pdb
+/Users/hyeonwoo/study/tdd/Variance/obj/Debug/net5.0/Variance.genruntimeconfig.cache
