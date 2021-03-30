@@ -1,19 +1,29 @@
-// unit-test 대상의 code (공백이 4개 -> 1개, 2개 -> 1개)
-function refineText(s, options) {
-    s = s.replace("    ", " ")
-    .replace("\t", " ")
-    .replace("  ", " ")
-    .replace("  ", " ")
-    .replace("  ", " ")
-    .replace("mockist", "*******")
-    .replace("purist", "******");
-    
-    if (options) {
-        for (const bannedWord of options.bannedWords) {
-            s = s.replace(bannedWord, "*".repeat(bannedWord.length));
-        }    
-    }
-    
-    return s;
+// unit-test 대상의 code
+function refineText(source, options) {
+    return [normalizeWhiteSpace, compactWhiteSpaces, maskBannedWords].reduce(
+        (value, filter) => filter(value, options),
+        source
+        );
+}
+
+function maskBannedWords(source, options) {
+    return options 
+        ? options.bannedWords.reduce(maskBannedWord, source)
+        : source;
+}
+
+function maskBannedWord(source, bannedWord) {
+    const mask = "*".repeat(bannedWord.length)
+    return source.replace(bannedWord, mask);
+}
+
+function normalizeWhiteSpace(source) {
+    return source.replace("\t", " ");
+}
+
+function compactWhiteSpaces(source) {
+    return source.indexOf("  ") < 0 
+    ? source 
+    : compactWhiteSpaces(source.replace("  ", " "));
 }
 module.exports = refineText;
