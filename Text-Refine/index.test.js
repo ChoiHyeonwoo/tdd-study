@@ -1,4 +1,6 @@
 const sut = require("./index"); // system under test (테스트 대상 시스템)
+const faker = require("faker");
+
 // 공백 2개 -> 1개 test case
 // test('sut transforms "hello  world" to "hello world"', () => {
 //     const actual = sut("hello  world");
@@ -30,11 +32,49 @@ const sut = require("./index"); // system under test (테스트 대상 시스템
 
 // 위 문제를 해결하기 위한 기법: parameterize
 test.each`
-    source              | expected
-    ${"hello  world"}   | ${"hello world"}
-    ${"hello   world"}  | ${"hello world"}
-    ${"hello    world"} | ${"hello world"}
+  source                 | expected
+  ${"hello  world"}      | ${"hello world"}
+  ${"hello   world"}     | ${"hello world"}
+  ${"hello    world"}    | ${"hello world"}
+  ${"hello     world"}   | ${"hello world"}
+  ${"hello      world"}  | ${"hello world"}
+  ${"hello       world"} | ${"hello world"}
 `('sut transforms "$source" to "$expected"', ({ source, expected }) => {
+  const actual = sut(source);
+  expect(actual).toBe(expected);
+});
+
+test.each`
+  source             | expected
+  ${"hello\t world"} | ${"hello world"}
+  ${"hello \tworld"} | ${"hello world"}
+`(
+  'sut transforms "$source" that contains tab to "$expected"',
+  ({ source, expected }) => {
     const actual = sut(source);
     expect(actual).toBe(expected);
-})
+  }
+);
+
+test.each`
+  source | bannedWords | expected
+  ${"hello mockist"} | ${["mockist", "purist"]} | ${"hello *******"}
+  ${"hello purist"} | ${["mockist", "purist"]} | ${"hello ******"}
+`(
+  'sut transforms "$source" to "$expected"',
+  ({ source, bannedWords, expected }) => {
+    const actual = sut(source, { bannedWords });
+    expect(actual).toBe(expected);
+  }
+);
+
+describe('given banned word', () => {
+    const bannedWord = faker.lorem.word();
+    const source = "hello " + bannedWord;
+    const expected = "hello " + "*".repeat(bannedWord.length);
+
+    test(`"${bannedWord}" when invoke sut then it returns "${expected}"`, () => {
+        const actual = sut(source, { bannedWords : [bannedWord]});
+        expect(actual).toBe(expected);
+    })
+});
