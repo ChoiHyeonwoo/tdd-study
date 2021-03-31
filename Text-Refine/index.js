@@ -2,11 +2,10 @@
 function refineText(source, options) {
     // initial code
     // source = source.trim();
-    // refactor version
     return [normalizeWhiteSpace, 
         compactWhiteSpaces, 
         maskBannedWords, 
-        trimWhiteSpaces
+        trimWhiteSpaces // refactor version
     ].reduce (
         (value, filter) => filter(value, options),
         source
