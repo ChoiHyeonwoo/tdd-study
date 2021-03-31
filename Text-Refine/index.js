@@ -1,9 +1,20 @@
 // unit-test 대상의 code
 function refineText(source, options) {
-    return [normalizeWhiteSpace, compactWhiteSpaces, maskBannedWords].reduce(
+    // initial code
+    // source = source.trim();
+    // refactor version
+    return [normalizeWhiteSpace, 
+        compactWhiteSpaces, 
+        maskBannedWords, 
+        trimWhiteSpaces
+    ].reduce (
         (value, filter) => filter(value, options),
         source
-        );
+    );
+}
+
+function trimWhiteSpaces(value) {
+    return value.trim();
 }
 
 function maskBannedWords(source, options) {
