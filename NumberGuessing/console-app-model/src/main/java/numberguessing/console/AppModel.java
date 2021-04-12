@@ -6,6 +6,7 @@ public final class AppModel {
     private static final String NEW_LINE = System.lineSeparator();
     public static final String SELECT_MODE_MESSAGE = "1: Single player game" + NEW_LINE + "2: Multiplayer game" + NEW_LINE + "3: Exit"
             + NEW_LINE + "Enter selection: ";
+
     interface Processor {
         Processor run(String input);
     }
