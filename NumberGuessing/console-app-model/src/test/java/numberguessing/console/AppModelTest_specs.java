@@ -221,6 +221,6 @@ class AppModelTest_specs {
         String actual = sut.flushOutput();
 
         assertThat(actual).endsWith("Enter " + player3 + "'s guess: ");
-        
+
     }
 }
